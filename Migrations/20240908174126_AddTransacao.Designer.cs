@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeEstoque.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240908160333_Update")]
-    partial class Update
+    [Migration("20240908174126_AddTransacao")]
+    partial class AddTransacao
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,9 @@ namespace ControleDeEstoque.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("QuantidadeDepois")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuantidadeTransacao")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Tipo")

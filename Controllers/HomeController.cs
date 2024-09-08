@@ -100,7 +100,7 @@ namespace HomeController.Controllers
 
             produto.Quantidade += transacao.Quantidade;
             await context.SaveChangesAsync();
-            return Ok(produto);
+            return Ok(newTransacao);
         }
 
         [HttpPatch("/saida")]
@@ -129,7 +129,7 @@ namespace HomeController.Controllers
             produto.Quantidade -= transacao.Quantidade;
             await context.SaveChangesAsync();
 
-            return Ok(transacao);
+            return Ok(newTransacao);
         }
 
         [HttpGet("/transacoes")]
@@ -139,6 +139,16 @@ namespace HomeController.Controllers
             return Ok(transacoes);
         }
 
+        [HttpGet("/transacoes/{id:int}")]
+        public async Task<IActionResult> GetTransacoesPorIdAsync([FromServices]AppDbContext context,[FromRoute] int id)
+        {
+            var transacao = await context.Transacoes.FindAsync(id);
+            if (transacao is null){
+                return NotFound();
+            }
+            return Ok(transacao);
+        }
+    
         [HttpDelete("{id:int}/removertransacoes")]
         public async Task<IActionResult> DeleteTransacoesAsync([FromServices]AppDbContext context, [FromRoute] int id)
         {

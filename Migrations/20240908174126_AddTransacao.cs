@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ControleDeEstoque.Migrations
 {
     /// <inheritdoc />
-    public partial class Update : Migration
+    public partial class AddTransacao : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,7 @@ namespace ControleDeEstoque.Migrations
                     Tipo = table.Column<string>(type: "TEXT", nullable: true),
                     QuantidadeAntes = table.Column<int>(type: "INTEGER", nullable: false),
                     QuantidadeDepois = table.Column<int>(type: "INTEGER", nullable: false),
+                    QuantidadeTransacao = table.Column<int>(type: "INTEGER", nullable: false),
                     DataTransacao = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
